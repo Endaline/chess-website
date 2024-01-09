@@ -7,8 +7,10 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { MdOutlineArrowDropDown } from "react-icons/md";
+import ChessLogo from "../icons/chess-logo";
 
 interface NavLink {
   name: string;
@@ -16,10 +18,11 @@ interface NavLink {
   icon?: React.JSX.Element;
 }
 const Navbar: React.FC = () => {
+  const pathname = usePathname();
   const navLinks: NavLink[] = [
     {
-      name: "ABOUTS",
-      route: "/abouts",
+      name: "ABOUT",
+      route: "/about",
     },
     {
       name: "CONTACTS",
@@ -39,8 +42,19 @@ const Navbar: React.FC = () => {
     },
   ];
   return (
-    <nav className="bg-black p-4">
-      <ul className="flex space-x-4 text-white">
+    <nav className="bg-black py-4 flex items-center justify-between">
+      {/* <div className="flex items-center"> */}
+      <Link href="/" className="flex items-center">
+        <p>
+          <ChessLogo />
+        </p>
+        <div>
+          <p className="text-lg">Check</p>
+          <p className="text-2xl">MATE</p>
+        </div>
+      </Link>
+      {/* </div> */}
+      <ul className="flex space-x-4 text-white items-center">
         <li className="relative group">
           <div className="flex  items-center">
             <Link href="/education">Education</Link>
@@ -80,6 +94,31 @@ const Navbar: React.FC = () => {
             </Link>
           </div>
         </li>
+        {navLinks.map((item, index) => {
+          const isActive = pathname.startsWith(item.route);
+          return (
+            <div
+              key={index}
+              className={
+                isActive
+                  ? "border-b-2  text-gray-400  border-gray-300 ease-[cubic-bezier(0.95,0.05,0.795,0.035)] "
+                  : "border-b-2 border-transparent hover:text-gray-400"
+              }>
+              <Link as={item.route} href={item.route}>
+                <div
+                  className={
+                    " py-2.5 pl-4 flex items-center flex-row gap-3 text-sm " +
+                    (isActive ? " rounded-sm" : "")
+                  }>
+                  {item.name}
+                </div>
+              </Link>
+            </div>
+          );
+        })}
+        <div className="border outline-1 border-solid bg-white text-black hover:bg-black hover:text-white py-3 px-8 duration-300 ease-in">
+          <Link href="#"> Get Study</Link>
+        </div>
       </ul>
     </nav>
   );

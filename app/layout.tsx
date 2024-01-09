@@ -21,9 +21,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <div className="xl:w-[1200px] max-h-screen mx-auto">
+          <div className="xl:w-[1200px]  mx-auto">
             <Navbar />
-            {children}
+            <div className="min-h-screen"> {children}</div>
             <Footer />
           </div>
         </Providers>
