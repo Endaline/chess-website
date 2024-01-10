@@ -13,7 +13,6 @@ export default function ArrowRightIcon({
   height,
   size = 22,
   className,
-  style,
 }: IconSvgProps) {
   return (
     <svg

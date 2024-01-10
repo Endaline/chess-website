@@ -1,16 +1,11 @@
 "use client";
-import {
-  Button,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownTrigger,
-} from "@nextui-org/react";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 import { MdOutlineArrowDropDown } from "react-icons/md";
 import ChessLogo from "../icons/chess-logo";
+import DownArrowIcon from "../icons/down-arrow";
 
 interface NavLink {
   name: string;
@@ -42,7 +37,7 @@ const Navbar: React.FC = () => {
     },
   ];
   return (
-    <nav className="bg-black py-4 flex items-center justify-between">
+    <nav className="bg-black py-4 flex items-center justify-between xl:w-[1200px] mx-auto">
       {/* <div className="flex items-center"> */}
       <Link href="/" className="flex items-center">
         <p>
@@ -57,10 +52,14 @@ const Navbar: React.FC = () => {
       <ul className="flex space-x-4 text-white items-center">
         <li className="relative group">
           <div className="flex  items-center">
-            <Link href="/education">Education</Link>
-            <p>
-              <MdOutlineArrowDropDown />
-            </p>
+            <Link
+              href="/education"
+              className="hover:text-gray-400 flex items-center">
+              Education
+              <p>
+                <MdOutlineArrowDropDown />
+              </p>
+            </Link>
           </div>
 
           {/* Dropdown content */}
@@ -116,7 +115,7 @@ const Navbar: React.FC = () => {
             </div>
           );
         })}
-        <div className="border outline-1 border-solid bg-white text-black hover:bg-black hover:text-white py-3 px-8 duration-300 ease-in">
+        <div className="border outline-1 border-solid bg-white text-black hover:bg-black hover:text-white py-3 px-6 duration-300 ease-in ">
           <Link href="#"> Get Study</Link>
         </div>
       </ul>
