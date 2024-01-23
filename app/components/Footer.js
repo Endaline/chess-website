@@ -11,8 +11,8 @@ import { FaXTwitter } from "react-icons/fa6";
 export default function Footer() {
   const email = "iendaline@yahoo.com";
   return (
-    <footer className="xl:w-[1200px] mx-auto py-40">
-      <div className="flex">
+    <footer className="bg-black text-white">
+      <div className="flex xl:w-[1400px] mx-auto py-40">
         <div className="space-y-10">
           <Link href="/" className="flex items-center">
             <p>
